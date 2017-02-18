@@ -44,13 +44,13 @@ export default class Toolbar extends Component {
           <Button
             plain
             id="link"
-            icon={<LinkIcon />}
+            icon={<LinkIcon id="link" />}
             onClick={this.props.onClickItem}
           />
           <Button
             plain
             id="list"
-            icon={<MenuIcon />}
+            icon={<MenuIcon id="list" />}
             onClick={this.props.onClickItem}
           />
           <Button
@@ -71,7 +71,7 @@ export default class Toolbar extends Component {
             plain
             id="image"
             reverse
-            icon={<ImageIcon />}
+            icon={<ImageIcon id="image" />}
             onClick={this.props.onClickItem}
           />
         </Menu>
