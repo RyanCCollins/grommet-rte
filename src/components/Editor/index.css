@@ -1,0 +1,18 @@
+.grommetux-rte__editor {
+  background-color: #fff;
+  vertical-align: top;
+  border-radius: 0.1875rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+}
+
+.grommetux-rte__editor--text-area {
+  width: 100%;
+  resize: none;
+  outline: none;
+  border: none;
+  display: block;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  font-size: 1rem;
+}

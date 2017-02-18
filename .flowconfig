@@ -1,0 +1,15 @@
+[ignore]
+.*/node_modules/.*
+
+[include]
+./src/
+./example/app
+
+[libs]
+config/flow-typed/npm
+
+[options]
+suppress_comment=.*\\$FlowFixMe
+suppress_comment=.*\\$FlowInvalidInputTest
+module.name_mapper='^components\/\(.*\)$' -> '<PROJECT_ROOT>/src/components/\1'
+module.name_mapper='.*\(.s?css\|.png\|.md\)' -> '<PROJECT_ROOT>/config/flow-typed/GeneralStub.js'

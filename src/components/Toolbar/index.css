@@ -1,0 +1,10 @@
+.grommetux-rte__toolbar {
+  position: relative;
+  border-radius: 4px;
+  font-size: 26px;
+}
+
+.grommetux-rte__toolbar--menu {
+  border-radius: 4px;
+  font-size: 1.5875rem !important;
+}
