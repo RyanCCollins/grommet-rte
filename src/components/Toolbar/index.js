@@ -4,18 +4,61 @@ import Box from 'grommet/components/Box';
 import Menu from 'grommet/components/Menu';
 import Button from 'grommet/components/Button';
 import LinkIcon from 'grommet/components/icons/base/Link';
-import MenuIcon from 'grommet/components/icons/base/Menu';
-import ImageIcon from 'grommet/components/icons/base/Image';
 import './index.css';
 
+export type ToolbarButtonId = 'bold' | 'italic' | 'quote' | 'link' | 'header-2' | 'header-1';
+
 type ToolbarProps = {
+  editorState: any,
   onClickItem: Function,
 }
+
+type ToolbarButtonType = {
+  icon?: any,
+  label?: string,
+  id: ToolbarButtonId,
+  style?: ?{},
+};
+
+const TOOLBAR_BUTTONS: ToolbarButtonType[] = [
+  {
+    id: 'bold',
+    label: 'B',
+    style: { fontStyle: 'bold' },
+  },
+  {
+    id: 'italic',
+    label: 'I',
+    style: { fontStyle: 'italic' },
+  },
+  {
+    id: 'quote',
+    label: '"',
+    style: { fontStyle: 'bold' },
+  },
+  {
+    id: 'header-1',
+    label: 'H1',
+    style: { fontStyle: 'bold' },
+  },
+  {
+    id: 'header-2',
+    label: 'H2',
+    style: { fontStyle: 'bold' },
+  },
+  {
+    id: 'link',
+    icon: <LinkIcon />,
+  },
+];
 
 // eslint-disable-next-line react/prefer-stateless-function
 export default class Toolbar extends Component {
   props: ToolbarProps;
   render() {
+    const blockType = this.props.editorState
+      .getCurrentContent()
+      .getBlockForKey();
     return (
       <Box className="grommetux-rte__toolbar" flex>
         <Menu
@@ -27,53 +70,15 @@ export default class Toolbar extends Component {
           colorIndex="light-2"
           responsive={false}
         >
-          <Button
-            plain
-            id="bold"
-            style={{ fontStyle: 'bold' }}
-            label="B"
-            onClick={this.props.onClickItem}
-          />
-          <Button
-            plain
-            id="italic"
-            style={{ fontStyle: 'italic' }}
-            label="I"
-            onClick={this.props.onClickItem}
-          />
-          <Button
-            plain
-            id="link"
-            icon={<LinkIcon id="link" />}
-            onClick={this.props.onClickItem}
-          />
-          <Button
-            plain
-            id="list"
-            icon={<MenuIcon id="list" />}
-            onClick={this.props.onClickItem}
-          />
-          <Button
-            plain
-            id="header"
-            style={{ fontStyle: 'bold' }}
-            label="T"
-            onClick={this.props.onClickItem}
-          />
-          <Button
-            plain
-            id="quote"
-            style={{ fontStyle: 'italic' }}
-            label='"'
-            onClick={this.props.onClickItem}
-          />
-          <Button
-            plain
-            id="image"
-            reverse
-            icon={<ImageIcon id="image" />}
-            onClick={this.props.onClickItem}
-          />
+          {TOOLBAR_BUTTONS.map(item =>
+            <Button
+              key={item.id}
+              {...item}
+              style={{ ...item.style, active: blockType === item.id }}
+              plain
+              onClick={() => this.props.onClickItem(item.id)}
+            />,
+          )}
         </Menu>
       </Box>
     );
