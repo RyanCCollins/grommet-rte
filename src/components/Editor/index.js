@@ -39,7 +39,6 @@ export default class Editor extends React.Component {
     this.setState({
       textInput,
     });
-    console.log(`Called handle click with id of ${id}, selectedText ${selectedText}, transformed ${transformed}`);
   }
   handleInput(e: any) {
     this.setState({
@@ -57,7 +56,7 @@ export default class Editor extends React.Component {
             onSelect={this.handleSelect}
             name="text-input"
             cols="30"
-            rows="3"
+            rows="5"
             placeholder="Start typing"
             className="grommetux-rte__editor--text-area"
           />
